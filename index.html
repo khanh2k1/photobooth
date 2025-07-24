@@ -2,38 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photobooth</title>
-    <link rel="stylesheet" href="dist/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photobooth</title>
+  <link rel="stylesheet" href="dist/style.css" />
 </head>
 
 <body>
-    <div class="container hidden">
-        <video id="video" autoplay playsinline></video>
-        <canvas id="canvas" hidden></canvas>
-        <button id="capture" />
+    
+  <!-- Popup chọn số ảnh và thời gian -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h3>Chọn số ảnh cần chụp</h3>
+      <button class="optionNumberPhotos" data-value="3">3 ảnh</button>
+      <button class="optionNumberPhotos" data-value="4">4 ảnh</button>
+      <button class="optionNumberPhotos" data-value="6">6 ảnh</button>
+
+      <h3>Chọn thời gian chuẩn bị</h3>
+      <button class="optionTime" data-value="3">10 giây</button>
+      <button class="optionTime" data-value="15">15 giây</button>
+      <button class="optionTime" data-value="20">20 giây</button>
+
+      <br />
+      <button id="confirmBtn" disabled>Xong, chụp thôi</button>
     </div>
-    <div class="countdown hidden">
-        <span></span>
+  </div>
+
+  <!-- Camera và chụp -->
+  <div class="container hidden">
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas" hidden></canvas>
+
+    <!-- Nút chụp -->
+    <button id="capture">Chụp</button>
+
+    <!-- Preview nhỏ các ảnh -->
+    <div id="preview-container">
+      <h3>Ảnh đã chụp:</h3>
+      <div id="preview-list" style="display: flex; gap: 8px; overflow-x: auto;"></div>
     </div>
-    <!-- Popup chọn số ảnh -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <h3>Chọn số ảnh cần chụp</h3>
-            <button class="optionNumberPhotos" value="3" onclick="getNumberOfPhotos(3)">3 ảnh</button>
-            <button class="optionNumberPhotos" value="4" onclick="getNumberOfPhotos(4)">4 ảnh</button>
-            <button class="optionNumberPhotos" value="6" onclick="getNumberOfPhotos(6)">6 ảnh</button>
-            <br />
-            <h3>Chọn thời gian chuẩn bị cho mỗi hình</h3>
-            <button class="optionTime" value="10" onclick="getDelayTime(10)">10 giây</button>
-            <button class="optionTime" value="15" onclick="getDelayTime(15)">15 giây</button>
-            <button class="optionTime" value="20" onclick="getDelayTime(20)">20 giây</button>
-            <br>
-            <button id="confirmBtn" disabled onclick="confirm()">Xong, chụp thôi</button>
-        </div>
-    </div>
+  </div>
+
+  <!-- Countdown hiển thị -->
+  <div class="countdown hidden">
+    <span></span>
+  </div>
+
+  <!-- Chọn layout sau khi chụp -->
+  <div id="layout-selector" class="layout-container hidden">
+    <h3>Chọn layout hiển thị</h3>
+    <div class="layout-options" id="layout-options"></div>
+  </div>
+
+  <!-- Kết quả layout sau khi chọn -->
+  <div id="result-layout" class="hidden">
+    <h3>Kết quả sau khi chụp:</h3>
+    <div id="photo-layout"></div>
+    <button id="downloadBtn">Tải ảnh về</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="html2canvas.min.js"></script>
+  <script src="script.js" defer></script>
+  <script src="camera.js" defer></script>
 </body>
-<script src="script.js" defer></script>
-<script src="camera.js"></script>
+
 </html>
