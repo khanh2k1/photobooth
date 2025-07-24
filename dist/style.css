@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: black;
 }
 .container #capture {
   width: 50px;
@@ -88,6 +89,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  background-color: black;
 }
 
 .popup-overlay,
