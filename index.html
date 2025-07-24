@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photobooth</title>
+    <link rel="stylesheet" href="dist/style.css">
+</head>
+
+<body>
+    <div class="container hidden">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" hidden></canvas>
+        <button id="capture" />
+    </div>
+    <div class="countdown hidden">
+        <span></span>
+    </div>
+    <!-- Popup chọn số ảnh -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h3>Chọn số ảnh cần chụp</h3>
+            <button class="optionNumberPhotos" value="3" onclick="getNumberOfPhotos(3)">3 ảnh</button>
+            <button class="optionNumberPhotos" value="4" onclick="getNumberOfPhotos(4)">4 ảnh</button>
+            <button class="optionNumberPhotos" value="6" onclick="getNumberOfPhotos(6)">6 ảnh</button>
+            <br />
+            <h3>Chọn thời gian chuẩn bị cho mỗi hình</h3>
+            <button class="optionTime" value="10" onclick="getDelayTime(10)">10 giây</button>
+            <button class="optionTime" value="15" onclick="getDelayTime(15)">15 giây</button>
+            <button class="optionTime" value="20" onclick="getDelayTime(20)">20 giây</button>
+            <br>
+            <button id="confirmBtn" disabled onclick="confirm()">Xong, chụp thôi</button>
+        </div>
+    </div>
+</body>
+<script src="script.js" defer></script>
+<script src="camera.js"></script>
+
+</html>
